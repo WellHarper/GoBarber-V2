@@ -1,0 +1,94 @@
+
+aula 1
+
+1 Instalar Express
+yarn add express
+2 Instalar typescript
+yarn add typescript -D
+3 Inicializar o typescript
+yarn tsc --init 
+4 criar pasta src/server.tsc
+5 yarn tsc pra converter, mas antes configurar no tsconfig outDir: "./dist" e rootDir "./src"
+6 baixar lib yarn add @types/express -D
+7 faça as configurações na server.ts 
+
+
+8 - Instalar ts-node-dev
+yarn add ts-node-dev -D
+dentro do package.json:
+"scripts": {
+    "build": "tsc",
+    "dev:server": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts"
+  },
+isso serve pra executar o server.ts sem precisar converter e executar o projeto
+--transpile-Only roda mesmo com erro
+--ignore-watch node_modules é pra ele ignorar os scripts da pasta
+
+
+
+aula 2
+
+vá no play com a baratinha na barra esquerda
+create a launch.json file
+
+trocar launch por attach em request,  porque o launch ele inicia tua aplicação com o debug 
+e o attach conecta, não precisa do debug pra liga
+embaixo do request cria: protocol: "inspector" e restart: "true"
+lá em package.json em scripts em dev:server coloco o --inspect pro visual studio code se conectar ao nosso codigo
+
+aula 4
+instalar uuidv4
+
+aula 5
+instalar date-fns
+
+aula 6
+cria models
+
+
+SoC - Separetion of Concerns
+DTO - DATA TRANSFER OBJECT
+Dependency Inversion (SOLID)
+
+DRIVER NATIVO - QUERY BUILDER - ORM
+
+
+
+
+
+
+
+
+MODULO 2 - 
+
+AULA 1
+
+//Comando pra rodar o postgres no docker
+$ docker run --name go-stack-postgres -e POSTGRES_PASSWORD=docker -p 5431:5432 -d postgres
+
+//Iniciar o container no docs
+
+docker ps -a -> pega o id -> docker start *id*
+
+
+AULA 2
+
+Crie ormconfig.json
+yarn add typeorm -pg
+yarn add reflect-metadata
+criar src/database/index.ts
+lá dentro você vai por um createConnection() importando do typeorm
+em server.ts :
+import './database'
+
+levantar imagem - docker start 330c2492c8e4
+
+AULA 3
+
+Vá em ormconfig -> migrations -< caminho pasta de migrations
+Vá em ormconfig -> cli -> caminho de cima sem final
+Vá em ormconfig -> entities ->   "./src/models/*.ts"
+Vá em package.json -> em scripts criar comando typeorm
+
+só posso alterar migrations se eu não subir pra algum controle de versão
+
